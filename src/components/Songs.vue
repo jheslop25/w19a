@@ -1,6 +1,6 @@
 <template>
     <div>this is the song list
-         <Title v-for="song in songsList" v-bind:key="song" :title="song.title" :artist="song.artist"/>
+         <Title v-for="song in songs" v-bind:key="song" :title="song.title" :artist="song.artist"/>
     </div>
    
 </template>
@@ -8,26 +8,17 @@
 import Title from './Title.vue'
 export default {
     name: 'Songs',
-    data : function(){
-        return {
-            songsList: {
-                song1: {
-                    title: 'a great song',
-                    artist: 'john'
-                },
-                song2: {
-                    title: 'a great song',
-                    artist: 'DRAKE'
-                },
-                song3: {
-                    title: 'a great song',
-                    artist: 'DRAKE'
-                }
-            }
-        }
-    }, 
+    props: {
+        songs: Array
+    },
     components: {
         Title
+    },
+    methods: {
+        passSongOut: function(){
+            this.$emit('addToPlayList', 'this is a song! YEAH!');
+            console.log('you clicked a song!');
+        }
     }
 }
 </script>

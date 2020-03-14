@@ -1,6 +1,6 @@
 <template>
     <div id="body-container">
-        <Songs/>
+        <Songs :songs="songs"/>
         <Playlist/>
     </div>
 </template>
@@ -12,6 +12,30 @@ export default {
     components: {
         Playlist,
         Songs
+    },
+    data: function (){
+        return {
+            songs: [
+                {
+                    title: 'title one',
+                    artist: 'artist one'
+                },
+                {
+                    title: 'title two',
+                    artist: 'artist two'
+                },
+                {
+                    title: 'title three',
+                    artist: 'artist two'
+                },
+                {
+                    title: 'title four',
+                    artist: 'artist one'
+                }
+            ],
+            // use these lists to handle business logic
+            playlist: []
+        }
     }
 }
 </script>
