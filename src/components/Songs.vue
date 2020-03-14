@@ -1,6 +1,6 @@
 <template>
     <div>this is the song list
-         <Title v-for="song in songs" v-bind:key="song" :title="song.title" :artist="song.artist"/>
+         <Title @addSong="passSongOut" v-for="song in songs" v-bind:key="song" :title="song.title" :artist="song.artist"/>
     </div>
    
 </template>
@@ -15,8 +15,8 @@ export default {
         Title
     },
     methods: {
-        passSongOut: function(){
-            this.$emit('addToPlayList', 'this is a song! YEAH!');
+        passSongOut: function(title, artist){
+            this.$emit('addItem', title, artist);
             console.log('you clicked a song!');
         }
     }

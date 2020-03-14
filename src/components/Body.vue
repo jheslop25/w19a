@@ -1,7 +1,7 @@
 <template>
     <div id="body-container">
-        <Songs :songs="songs"/>
-        <Playlist/>
+        <Songs @addItem="buildPlayList" :songs="songs"/>
+        <Playlist :songs="playlist"/>
     </div>
 </template>
 <script>
@@ -35,6 +35,12 @@ export default {
             ],
             // use these lists to handle business logic
             playlist: []
+        }
+    },
+    methods: {
+        buildPlayList: function(title, artist){
+            let song = {"title": title, "artist": artist};
+            this.playlist.push(song);
         }
     }
 }
